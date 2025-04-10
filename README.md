@@ -275,7 +275,47 @@ We use classifciation report and cofusion matrix to review the perfomance of the
 >> The model is biased toward class 0 — good at predicting 'No', not so much 'Yes'.
 
 
-#### Baseline Model on KNeighbour Classifier
+#### Baseline Model on KNeighbour Classifier:
+The KNN Classifier is a supervised machine learning algorithm that classifies a data point based on the majority label of its 'k' nearest neighbors in the feature space.
+For a new data point, the algorithm:
+
+- Computes the distance (usually Euclidean) between it and all points in the training set. 
+- Selects the k closest points.
+- Assigns the most common class label among those neighbors to the new data point
+
+Let's understand the parameter used here:
+- n_neighbors=4: This means the algorithm will consider the 4 nearest neighbors when making a classification decision.
+- weights='distance': Instead of treating all 4 neighbors equally, closer neighbors get more influence on the final decision. The contribution of each neighbor is inversely proportional to its distance from the query point.
+- metric='minkowski' with p=1: This sets the distance measure used to find the "nearest" neighbors.
+
+We use classifciation report and cofusion matrix to review the perfomance of the based model on KNeighbour Tree. 
+
+![KNeighbour Tree Base Model Confusion Matrix](images/screenshots/img19.jpg)
+
+
+![KNeighbour Tree Classification Report](images/screenshots/img30.jpg)
+
+Overall Performance:
+
+- Accuracy: 0.90 → 90% of predictions are correct.Accuracy is skewed by class imbalance (many more 'No' than 'Yes').
+
+- Macro Average: Averages metrics across both classes equally.
+
+>> Precision: 0.74
+
+>> Recall: 0.71
+
+>> F1-score: 0.72
+
+- Weighted Average: Averages metrics considering class distribution (more weight to class 0):
+
+>> Precision: 0.89
+
+>> Recall: 0.90
+
+>> F1-score: 0.90
+
+📌 Interpretation: While the overall accuracy and weighted metrics look good, they hide the poor performance on the minority class (subscribers). This is a common issue in imbalanced datasets.
 
 
 
