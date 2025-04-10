@@ -457,5 +457,16 @@ Model evaluation in classification tasks is a crucial step to assess how well a 
 
 #### 🔧 What Can Be Done to Improve the Models performance?
 
+1. Handling Class Imbalance: We can use the class_weight='balanced' parameter in the model to help with class imbalance.
+
+2. Tuning Hyperparameters: 
+   - Using max_depth, min_samples_split, and class_weight in Decision Tree
+   - Using k and the distance metric in KNeighbour 
+   - Using C, kernel ('linear', 'poly', 'rbf'), and gamma in SVM
+   - Using solvers like 'liblinear' or 'saga' for L1 regularization.
+
+3. GridSearchCV and Kfold cross validation to find best parameter in case of each algorithm. 
+
+
 
 
