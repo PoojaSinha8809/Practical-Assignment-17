@@ -244,6 +244,22 @@ We will begin by splitting the dataset into training and testing subsets. This i
 
 Once the dataset is split into training and testing sets, the next critical step is to build baseline classification models using a variety of algorithms. In this assignment, we focus on four widely used machine learning classifiers: Decision Tree, k-Nearest Neighbors (k-NN), Support Vector Machine (SVM), and Logistic Regression. Each of these models offers unique strengths and approaches to classification tasks. The goal of building these baseline models is to evaluate their initial performance on the dataset, using consistent metrics such as accuracy, precision, recall, and F1-score. This comparison helps identify which algorithm is most suitable for the given problem. Moreover, establishing baseline results sets the foundation for further model tuning and optimization in later stages, such as hyperparameter tuning, feature selection, or ensemble techniques. By systematically evaluating and comparing these models, we can make informed decisions about which classifier best balances performance, complexity, and interpretability for the task at hand. 
 
+**Decision Tree Base Model**
+
+The first model we used is based on Decision Tree algorithm. A Decision Tree is a type of supervised machine learning algorithm that can be used for both classification and regression tasks. It models decisions and their possible consequences in the form of a tree-like structure.
+We used here sklearn.tree.DecisionTreeClassifier. Let's take a look at the paramerters used in model development. 
+
+![Decision Tree Base Model](images/screenshots/img28.jpg)
+
+We use classifciation report and cofusion matrix to review the perfomance of the based model on Decision Tree. 
+
+![Decision Tree Base Model Confusion Matrix](images/screenshots/img18.jpg)
+
+
+![Decision Tree Classification Report](images/screenshots/img29.jpg)
+
+
+
 ### Model Evaluation and Comparision 
 Model evaluation in classification tasks is a crucial step to assess how well a model performs in predicting categorical outcomes. It involves using a variety of metrics that go beyond simple accuracy, providing a more comprehensive view of model performance. Common evaluation metrics include the confusion matrix, precision, recall, F1-score, and accuracy. Accuracy measures the overall correctness of the model, but it can be misleading when dealing with imbalanced datasets. Precision focuses on the proportion of correct positive predictions, while recall measures the model's ability to identify all relevant positive cases. The F1-score, as the harmonic mean of precision and recall, offers a balanced evaluation metric, especially useful when false positives and false negatives carry different consequences. Additionally, techniques such as cross-validation help ensure the model's performance is consistent and not just a result of overfitting to a particular dataset. Proper evaluation allows for informed decision-making when selecting and fine-tuning classification models for real-world applications.
 
