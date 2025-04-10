@@ -168,7 +168,7 @@ These visualizations help understand the underlying patterns and spread of each 
 
 - Previous Distribution: Reflects the number of contacts before the campaign with an each client. The distribution is Right-skewed, with many zeros. Most clients had no prior contact. Non-zero values may indicate higher interest or persistent marketing efforts.
 
-- Pdays Distribution: Shows the number of days passed by, after the client was last contacted from a previous campaign. 999 usually means the client was not previously contacted. The distribution has large spike at 999. From the interpreation, we can find majority of clients were never contacted before. You might treat this as a separate category rather than a continuous variable.
+- Pdays Distribution: Shows the number of days passed by, after the client was last contacted from a previous campaign. 999 usually means the client was not previously contacted. The distribution has large spike at 999. From the interpreation, we can find majority of clients were never contacted before. We might treat this as a separate category rather than a continuous variable.
 
 - Emp.var.rate Distribution: Shows Employment variation rate (quarterly indicator). The distribution is discrete with only a few values. From the interpretation we can find that plot indicate the economic situation during the time of the campaign. Can be a strong predictor of success in financial product marketing.
 
@@ -319,10 +319,10 @@ Overall Performance:
 
 #### Baseline Model on Support Vector Machine Classifier(SVM):
 
-An SVM is a supervised learning algorithm used for both classification and regression tasks. It works by finding the best boundary (hyperplane) that separates classes in your dataset with the maximum margin.
+An SVM is a supervised learning algorithm used for both classification and regression tasks. It works by finding the best boundary (hyperplane) that separates classes in our dataset with the maximum margin.
 
 ⚡ Additional Info:
-SVM can perform better than KNN or decision trees when your data isn't easily separated with simple splits — especially in imbalanced or noisy datasets.
+SVM can perform better than KNN or decision trees when our data isn't easily separated with simple splits — especially in imbalanced or noisy datasets.
 
 ![SVM Parameter Base Model](images/screenshots/img31.jpg)
 
@@ -331,7 +331,7 @@ We used classification report and cofusion matrix to review the perfomance of th
 ![SVM Base Model Confusion Matrix](images/screenshots/img20.jpg)
 
 
-![SVM Classification Report](images/screenshots/img30.jpg)
+![SVM Classification Report](images/screenshots/img32.jpg)
 
 Overall Performance:
 
