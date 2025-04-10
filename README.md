@@ -120,6 +120,19 @@ How to Handle Negative Values in Our Model?
 
 **Conclusion:** Negative values in emp.var.rate and cons.price.idx are not inherently problematic. They simply reflect economic conditions such as employment declines or price deflation. As long as we understand their implications, these negative values can be incorporated into the model to help identify patterns and trends related to campaign success.
 
+**Let's have a look at Explortory Data Analysis on categorical data:**
+
+For categorical we will use the subscription status values and review its frquency distribution.
+![Frequency Distribution](images/screenshots/img25.jpg)
+
+We started following analysis for each feature :
+
+- **Univariate Analysis:**
+>> Univariate analysis involves examining a single variable at a time to understand its distribution and characteristics. It helps in understanding the basic properties of individual features within the dataset.
+- **Bivariate Analysis:**
+>> Bivariate analysis examines the relationship between two variables. It helps us understand how two variables are related to each other, and if one can help predict the other
+- **Multivariate Analysis:**
+>> Multivariate analysis involves examining more than two variables at once to understand the complex interactions and relationships among them. Techniques like pair plots, heatmaps of correlations, or 3D scatter plots are useful for visualizing interactions between multiple numerical variables. 
 
 
 
