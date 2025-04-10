@@ -24,39 +24,6 @@ The techiqiue we used in reference to the paper follows CRISP DM framework, whic
 In this phase, we begin by loading the CSV file into a Pandas DataFrame to facilitate data analysis and exploration. This allows us to examine the relationships between various features in the dataset and understand their potential impact on client decisions. As part of the data preprocessing, we check for and address duplicate entries, missing values, and any inappropriate or inconsistent data. Ensuring data quality is essential for building robust and accurate models. Additionally, we employ various data visualization techniques to explore feature distributions and identify patterns or trends that may influence a client's decision to subscribe to a term deposit. These visual insights help guide the selection of relevant features for modeling.
 
 **Understanding the features:**
-Let's take a quick look on features in the dataset.
-
-Input variables:
-**bank client data:**
-1 - age (numeric)
-2 - job : type of job (categorical: 'admin.','blue-collar','entrepreneur','housemaid','management','retired','self-employed','services','student','technician','unemployed','unknown')
-3 - marital : marital status (categorical: 'divorced','married','single','unknown'; note: 'divorced' means divorced or widowed)
-4 - education (categorical: 'basic.4y','basic.6y','basic.9y','high.school','illiterate','professional.course','university.degree','unknown')
-5 - default: has credit in default? (categorical: 'no','yes','unknown')
-6 - housing: has housing loan? (categorical: 'no','yes','unknown')
-7 - loan: has personal loan? (categorical: 'no','yes','unknown')
-
-**related with the last contact of the current campaign:**
-8 - contact: contact communication type (categorical: 'cellular','telephone')
-9 - month: last contact month of year (categorical: 'jan', 'feb', 'mar', ..., 'nov', 'dec')
-10 - day_of_week: last contact day of the week (categorical: 'mon','tue','wed','thu','fri')
-11 - duration: last contact duration, in seconds (numeric). Important note: this attribute highly affects the output target (e.g., if duration=0 then y='no'). Yet, the duration is not known before a call is performed. Also, after the end of the call y is obviously known. Thus, this input should only be included for benchmark purposes and should be discarded if the intention is to have a realistic predictive model.
-
-**other attributes:**
-12 - campaign: number of contacts performed during this campaign and for this client (numeric, includes last contact)
-13 - pdays: number of days that passed by after the client was last contacted from a previous campaign (numeric; 999 means client was not previously contacted)
-14 - previous: number of contacts performed before this campaign and for this client (numeric)
-15 - poutcome: outcome of the previous marketing campaign (categorical: 'failure','nonexistent','success')
-
-**social and economic context attributes:**
-16 - emp.var.rate: employment variation rate - quarterly indicator (numeric)
-17 - cons.price.idx: consumer price index - monthly indicator (numeric)
-18 - cons.conf.idx: consumer confidence index - monthly indicator (numeric)
-19 - euribor3m: euribor 3 month rate - daily indicator (numeric)
-20 - nr.employed: number of employees - quarterly indicator (numeric)
-
-**Output variable (desired target):**
-21 - y - has the client subscribed a term deposit? (binary: 'yes','no')
 
 In the data exploration, we find that there is no missing value in the dataset. So based on features data we have categorized the data further. 
 Data Categorization
@@ -64,43 +31,44 @@ Data Categorization
 Here’s how the data can be categorized into Client Profile, Marketing Data, and Output Variable:
 
 **Client Profile (Personal and Socioeconomic Data): This category includes data that describes the client’s personal attributes, demographic information, and their socioeconomic context.**
-Age (numeric) – Age of the client.
-Job (categorical) – Type of job (e.g., 'admin.', 'blue-collar', 'entrepreneur', etc.).
-Marital (categorical) – Marital status (e.g., 'divorced', 'married', 'single', etc.).
-Education (categorical) – Level of education (e.g., 'basic.4y', 'university.degree', etc.).
-Default (categorical) – Whether the client has credit in default ('no', 'yes', 'unknown').
-Housing (categorical) – Whether the client has a housing loan ('no', 'yes', 'unknown').
-Loan (categorical) – Whether the client has a personal loan ('no', 'yes', 'unknown').
+- Age (numeric) – Age of the client.
+- Job (categorical) – Type of job (e.g., 'admin.', 'blue-collar', 'entrepreneur', etc.).
+- Marital (categorical) – Marital status (e.g., 'divorced', 'married', 'single', etc.).
+- Education (categorical) – Level of education (e.g., 'basic.4y', 'university.degree', etc.).
+- Default (categorical) – Whether the client has credit in default ('no', 'yes', 'unknown').
+- Housing (categorical) – Whether the client has a housing loan ('no', 'yes', 'unknown').
+- Loan (categorical) – Whether the client has a personal loan ('no', 'yes', 'unknown').
 
 
 **Marketing Data (Campaign and Contact Information): This category includes data related to the client’s interactions during the current and previous marketing campaigns.**
 
-Contact (categorical) – Communication type used for contact ('cellular', 'telephone').
-Month (categorical) – Month of the last contact ('jan', 'feb', ..., 'dec').
-Day of Week (categorical) – Day of the week of the last contact ('mon', 'tue', ..., 'fri').
-Duration (numeric) – Duration of the last contact in seconds (Important note: should only be included for benchmarking purposes as it is not available before the call).
-Campaign (numeric) – Number of contacts made during the current campaign for this client (includes the last contact).
-Pdays (numeric) – Number of days since the client was last contacted in a previous campaign (999 means no previous contact).
-Previous (numeric) – Number of contacts made before this campaign for this client.
-Poutcome (categorical) – Outcome of the previous campaign ('failure', 'nonexistent', 'success').
-Output Variable (Target Variable): This category includes the desired outcome of the campaign that we aim to predict.
-Y (binary) – Has the client subscribed to a term deposit? ('yes', 'no').
+- Contact (categorical) – Communication type used for contact ('cellular', 'telephone').
+- Month (categorical) – Month of the last contact ('jan', 'feb', ..., 'dec').
+- Day of Week (categorical) – Day of the week of the last contact ('mon', 'tue', ..., 'fri').
+- Duration (numeric) – Duration of the last contact in seconds (Important note: should only be included for benchmarking purposes as it is not  available before the call).
+- Campaign (numeric) – Number of contacts made during the current campaign for this client (includes the last contact).
+- Pdays (numeric) – Number of days since the client was last contacted in a previous campaign (999 means no previous contact).
+- Previous (numeric) – Number of contacts made before this campaign for this client.
+- Poutcome (categorical) – Outcome of the previous campaign ('failure', 'nonexistent', 'success').
+- Output Variable (Target Variable): This category includes the desired outcome of the campaign that we aim to predict.
+- Y (binary) – Has the client subscribed to a term deposit? ('yes', 'no').
 
 
 **Social and Economic Context Data: This category includes broader economic and social context indicators that might influence campaign success but are not specific to the client.**
 
-Emp.var.rate (numeric) – Employment variation rate (quarterly indicator).
-Cons.price.idx (numeric) – Consumer price index (monthly indicator).
-Cons.conf.idx (numeric) – Consumer confidence index (monthly indicator).
-Euribor3m (numeric) – Euribor 3-month rate (daily indicator).
-Nr.employed (numeric) – Number of employees (quarterly indicator).
+- Emp.var.rate (numeric) – Employment variation rate (quarterly indicator).
+- Cons.price.idx (numeric) – Consumer price index (monthly indicator).
+- Cons.conf.idx (numeric) – Consumer confidence index (monthly indicator).
+- Euribor3m (numeric) – Euribor 3-month rate (daily indicator).
+- Nr.employed (numeric) – Number of employees (quarterly indicator).
 
 **Summary of Categories:**
 
-Client Profile: Attributes related to the individual’s personal and socioeconomic information.
-Marketing Data: Attributes related to the client’s interaction in the campaign and previous campaign outcomes.
-Output Variable: The target we aim to predict, i.e., whether the client subscribed to the term deposit.
-Social and Economic Context Data: Broader contextual data that may influence campaign outcomes.
+- Client Profile: Attributes related to the individual’s personal and socioeconomic information.
+- Marketing Data: Attributes related to the client’s interaction in the campaign and previous campaign outcomes.
+- Output Variable: The target we aim to predict, i.e., whether the client subscribed to the term deposit.
+- Social and Economic Context Data: Broader contextual data that may influence campaign outcomes.
+
 This categorization helps organize the data based on its role in the predictive modeling process and ensures a clearer structure for analyzing the factors contributing to the success of the marketing campaign.
 
 
