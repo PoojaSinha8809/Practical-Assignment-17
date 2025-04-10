@@ -138,10 +138,48 @@ Let's see the overview on each type of analysis and findings:
 1. **Univariate Analysis:**
 
 ![Job Distribution](images/screenshots/img2.jpg)
+
+Upon analyzing the job distribution, it is evident that the number of entries labeled as 'unknown' is very low. Given their minimal impact on the overall dataset, it is considered safe to remove these rows without significantly affecting the analysis.
+
 ![Education Distribution After Cleanup](images/screenshots/img3.jpg)
+
+Analyzing the education distribution graph, we observe that the number of entries with 'unknown' education levels is relatively low compared to the overall dataset. Although the count of 'illiterate' entries is even smaller, it is not advisable to remove them, as they represent a valid category of education. In contrast, 'unknown' values do not provide meaningful information and may introduce noise into the dataset. Therefore, removing rows with 'unknown' education levels is a safer and more logical step toward ensuring a cleaner dataset, which is essential for building a reliable and accurate model.
+
+
 ![Housing Distribution After Cleanup](images/screenshots/img4.jpg)
+
+From the Housing Distribution graph, it is evident that the number of clients with an 'unknown' housing loan status is very small in comparison to those with clearly defined statuses (i.e., 'yes' or 'no'). Since this category constitutes only a negligible portion of the dataset, retaining these rows adds little value to the analysis and may introduce unnecessary noise. By removing the entries with 'unknown' housing loan status, we can simplify the dataset and achieve a clearer, more accurate understanding of the distribution between clients who have a housing loan and those who do not. This step also helps improve the quality of the data, which is essential for building a robust and interpretable model.
+
+![Previous Outcome](images/screenshots/img27.jpg)
+
+The outcome of previous campaigns plays a crucial role in bank marketing by providing valuable insights into customer preferences, behaviors, and the effectiveness of past strategies. Analyzing past campaign outcomes helps banks identify what worked well and what didn't, allowing them to refine their marketing strategies, optimize customer targeting, and improve engagement in future campaigns. It also enables banks to personalize their offerings based on customer feedback and responses, leading to better conversion rates and stronger customer relationships.
+
 ![Age Distribution](images/screenshots/img5.jpg)
+
+The histogram, combined with a Kernel Density Estimate (KDE) curve, provides a detailed view of the age distribution among the clients. The distribution appears to be right-skewed, indicating that the majority of clients fall within the age range of approximately 25 to 60 years. This skewness suggests that younger and middle-aged individuals are more commonly represented in the dataset, while the number of clients decreases gradually as age increases beyond 60. Understanding this age distribution is important, as it can influence various aspects of the analysis, including marketing strategies, customer segmentation, and model performance. The KDE curve also helps smooth out the histogram, making it easier to observe the general pattern and central tendencies within the age variable.
+
 ![Histogram Distribution on all features](images/screenshots/img6.jpg)
+
+These visualizations help understand the underlying patterns and spread of each variable, which is crucial for exploratory data analysis (EDA) and model preparation.
+
+- Duration: The graph is right-skewed distribution, we can have an interpretation like -  most calls are short; very few are long. Long durations often correlate positively with a successful outcome. This interpretation helped in deciding if we need this info for model training. 
+
+- Campaign: Indicates the number of contacts performed during this campaign for each client. A high number of contacts could indicate diminishing returns or potential annoyance, which might reduce conversion rates.
+
+- Previous Distribution: Reflects the number of contacts before the campaign with an each client. The distribution is Right-skewed, with many zeros. Most clients had no prior contact. Non-zero values may indicate higher interest or persistent marketing efforts.
+
+- Pdays Distribution: Shows the number of days passed by, after the client was last contacted from a previous campaign. 999 usually means the client was not previously contacted. The distribution has large spike at 999. From the interpreation, we can find majority of clients were never contacted before. You might treat this as a separate category rather than a continuous variable.
+
+- Emp.var.rate Distribution: Shows Employment variation rate (quarterly indicator). The distribution is discrete with only a few values. From the interpretation we can find that plot indicate the economic situation during the time of the campaign. Can be a strong predictor of success in financial product marketing.
+
+- Cons.price.idx Distribution: Shows Consumer price index (monthly indicator). In the distribution we have sharp peak at one or two values. it's not perfectly symmetric. The interpreation represents the price inflation. Could influence clients’ financial decisions.
+
+- Cons.conf.idx Distribution: Shows Consumer confidence index (monthly indicator). Confidence value is negative so it reflects general public sentiment about the economy. Lower confidence might reduce willingness to invest.
+
+- Euribor3m Distribution: Shows Euribor 3-month rate (daily indicator). Interest rate trends can heavily influence financial decision-making. Lower rates may correlate with higher marketing success.
+
+- Nr.employed Distribution: Shows Number of employees (quarterly indicator). The distribution is discrete, with peaks at specific values. Reflects employment trends. Certain values may align with economic stability, impacting consumer behavior.
+
 
 2. **Bivariate Analysis:**
 
