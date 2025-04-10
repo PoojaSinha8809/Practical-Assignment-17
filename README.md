@@ -269,18 +269,18 @@ We use classifciation report and cofusion matrix to review the perfomance of the
 
 **Overall Metric:**
 
-- Accuracy: 0.90
+- Accuracy: 0.91
 >> The model is correct 90% of the time across all predictions.However, accuracy is misleading here due to class imbalance (many more "No" than "Yes").
 
 - Macro Avg:
->> Precision: 0.76, Recall: 0.70, F1-score: 0.72. Simple average of metrics for both classes, treating them equally. Highlights the imbalance in performance between classes.
+>> Precision: 0.77, Recall: 0.68, F1-score: 0.71. Simple average of metrics for both classes, treating them equally. Highlights the imbalance in performance between classes.
 
 - Weighted Avg:
->> Precision: 0.89, Recall: 0.90, F1-score: 0.90. Takes into account the support (number of samples) for each class. Heavily influenced by class 0, since it has many more samples.
+>> Precision: 0.89, Recall: 0.91, F1-score: 0.90. Takes into account the support (number of samples) for each class. Heavily influenced by class 0, since it has many more samples.
 
 ⚠️ **Key Insight: Class Imbalance Problem**
 
->> Class 1 (subscribed) is underrepresented: only 919 out of 8238 (~11%)
+>> Class 1 (subscribed) is underrepresented: only 869 out of 7649 (~11%)
 >> The model is biased toward class 0 — good at predicting 'No', not so much 'Yes'.
 
 
@@ -411,6 +411,17 @@ Overall Performance:
 >> Recall: 0.92: The recall is higher than the macro average due to the dominance of the class 0 predictions.
 
 >> F1-score: 0.91: The model is performing well when considering both precision and recall across all classes.
+
+📉 The Core Issue: Class Imbalance
+
+As in our previous models (e.g., SVM), there is still a class imbalance issue:
+
+6813 clients are in class 0 (not subscribed)
+
+836 clients are in class 1 (subscribed)
+
+The precision and recall for class 1 are still not ideal, primarily because the model is heavily biased toward predicting class 0 (not subscribed), which is more prevalent.
+
 
 
 ### Model Evaluation and Comparision 
