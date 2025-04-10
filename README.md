@@ -180,6 +180,15 @@ These visualizations help understand the underlying patterns and spread of each 
 
 - Nr.employed Distribution: Shows Number of employees (quarterly indicator). The distribution is discrete, with peaks at specific values. Reflects employment trends. Certain values may align with economic stability, impacting consumer behavior.
 
+📉 The Core Issue: Class Imbalance
+As in our previous models (e.g., SVM), there is still a class imbalance issue:
+
+- 6813 clients are in class 0 (not subscribed)
+
+- 836 clients are in class 1 (subscribed)
+
+The precision and recall for class 1 are still not ideal, primarily because the model is heavily biased toward predicting class 0 (not subscribed), which is more prevalent.
+
 
 2. **Bivariate Analysis:**
 
@@ -365,6 +374,44 @@ This confirms that only 57.66% of the clients predicted as "Subscribed" actually
 This imbalance leads the model to favor the majority class (non-subscribers), reducing its effectiveness in catching the minority (subscribers).
 
 #### Baseline Model on Logistic Regression:
+
+Logistic Regression is a classification algorithm, widely-used algorithms for binary classification. It is used to model the probability that a given input belongs to a particular class. 
+
+In our case, logistic regression is a great baseline model to understand which features most influence a subscription.
+
+Let's look at the parameters:
+
+- max_iter=200: This parameter controls the maximum number of iterations the model will take to converge to a solution. Logistic regression uses optimization algorithms to find the best-fitting coefficients (weights) for the features. The max_iter value sets the upper limit for the number of iterations (steps) the algorithm will take during this optimization process. If the model has not converged after 200 iterations, it will stop and return the solution it has found so far. If we have a more complex dataset, we may need to increase max_iter to ensure convergence, especially when dealing with high-dimensional data or when regularization is involved.
+
+- solver='newton-cg': This parameter specifies the optimization algorithm used to find the best-fitting model coefficients.Different solvers are available for logistic regression in Scikit-learn. The solver we choose affects the efficiency and behavior of the optimization process.
+
+We used classification report and cofusion matrix to review the perfomance of the based model on Logistic Regression. 
+
+![Logistic Regression Model Confusion Matrix](images/screenshots/img21.jpg)
+
+
+![Logistic Regression Classification Report](images/screenshots/img33.jpg)
+
+Overall Performance:
+
+- Accuracy: 92% → The model correctly predicts 92% of the instances. However, accuracy alone is not always reliable in imbalanced datasets, as it might be misleading.
+
+- Macro Average:
+
+>> Precision: 0.81: Averaged across both classes, it shows that the model's precision is quite good.
+
+>> Recall: 0.70: Averaged recall shows the model's ability to correctly identify both classes, but it still has issues identifying class 1 (subscribed clients).
+
+>> F1-score: 0.74: The overall balance of precision and recall is decent, but the recall for class 1 is pulling it down.
+
+- Weighted Average:
+
+>> Precision: 0.91: The weighted precision reflects the model's performance across the classes, weighted by class support (more clients in class 0).
+
+>> Recall: 0.92: The recall is higher than the macro average due to the dominance of the class 0 predictions.
+
+>> F1-score: 0.91: The model is performing well when considering both precision and recall across all classes.
+
 
 ### Model Evaluation and Comparision 
 Model evaluation in classification tasks is a crucial step to assess how well a model performs in predicting categorical outcomes. It involves using a variety of metrics that go beyond simple accuracy, providing a more comprehensive view of model performance. Common evaluation metrics include the confusion matrix, precision, recall, F1-score, and accuracy. Accuracy measures the overall correctness of the model, but it can be misleading when dealing with imbalanced datasets. Precision focuses on the proportion of correct positive predictions, while recall measures the model's ability to identify all relevant positive cases. The F1-score, as the harmonic mean of precision and recall, offers a balanced evaluation metric, especially useful when false positives and false negatives carry different consequences. Additionally, techniques such as cross-validation help ensure the model's performance is consistent and not just a result of overfitting to a particular dataset. Proper evaluation allows for informed decision-making when selecting and fine-tuning classification models for real-world applications.
