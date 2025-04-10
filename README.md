@@ -134,6 +134,14 @@ We did following analysis to understand each feature :
 - **Multivariate Analysis:**
 >> Multivariate analysis involves examining more than two variables at once to understand the complex interactions and relationships among them. Techniques like pair plots, heatmaps of correlations, or 3D scatter plots are useful for visualizing interactions between multiple numerical variables. 
 
+Let's see the overview on each type of analysis and findings:
+1. **Univariate Analysis**
+
+![Job Distribution](images/screenshots/img2.jpg)
+![Education Distribution After Cleanup](images/screenshots/img3.jpg)
+![Housing Distribution After Cleanup](images/screenshots/img4.jpg)
+![Age Distribution](images/screenshots/img5.jpg)
+![Histogram Distribution on all features](images/screenshots/img6.jpg)
 
 
 ### Splitting the Data into Training and Testing: 
