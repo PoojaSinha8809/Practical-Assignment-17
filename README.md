@@ -288,7 +288,7 @@ Let's understand the parameter used here:
 - weights='distance': Instead of treating all 4 neighbors equally, closer neighbors get more influence on the final decision. The contribution of each neighbor is inversely proportional to its distance from the query point.
 - metric='minkowski' with p=1: This sets the distance measure used to find the "nearest" neighbors.
 
-We use classifciation report and cofusion matrix to review the perfomance of the based model on KNeighbour Tree. 
+We used classification report and cofusion matrix to review the perfomance of the based model on KNeighbour Tree. 
 
 ![KNeighbour Tree Base Model Confusion Matrix](images/screenshots/img19.jpg)
 
@@ -317,8 +317,54 @@ Overall Performance:
 
 📌 Interpretation: While the overall accuracy and weighted metrics look good, they hide the poor performance on the minority class (subscribers). This is a common issue in imbalanced datasets.
 
+#### Baseline Model on Support Vector Machine Classifier(SVM):
+
+An SVM is a supervised learning algorithm used for both classification and regression tasks. It works by finding the best boundary (hyperplane) that separates classes in your dataset with the maximum margin.
+
+⚡ Additional Info:
+SVM can perform better than KNN or decision trees when your data isn't easily separated with simple splits — especially in imbalanced or noisy datasets.
+
+![SVM Parameter Base Model](images/screenshots/img31.jpg)
+
+We used classification report and cofusion matrix to review the perfomance of the based model on SVM. 
+
+![SVM Base Model Confusion Matrix](images/screenshots/img20.jpg)
 
 
+![SVM Classification Report](images/screenshots/img30.jpg)
+
+Overall Performance:
+
+- Accuracy: 90% → Model is correct 90% of the time — but this is misleading due to class imbalance.
+
+- Macro Avg (Treats classes equally):
+
+>> Precision: 0.76
+
+>> Recall: 0.71
+
+>> F1-score: 0.73
+
+- Weighted Avg (Accounts for class imbalance):
+
+>> Precision: 0.90
+
+>> Recall: 0.90
+
+>> F1-score: 0.90
+
+This confirms that only 57.66% of the clients predicted as "Subscribed" actually were. In marketing terms, this means a fair number of resources might be wasted contacting people unlikely to convert.
+
+📉 The Core Issue: Class Imbalance
+
+- Out of 7649 total samples:
+
+>> 6813 are "No"
+>> Only 836 are "Yes"
+
+This imbalance leads the model to favor the majority class (non-subscribers), reducing its effectiveness in catching the minority (subscribers).
+
+#### Baseline Model on Logistic Regression:
 
 ### Model Evaluation and Comparision 
 Model evaluation in classification tasks is a crucial step to assess how well a model performs in predicting categorical outcomes. It involves using a variety of metrics that go beyond simple accuracy, providing a more comprehensive view of model performance. Common evaluation metrics include the confusion matrix, precision, recall, F1-score, and accuracy. Accuracy measures the overall correctness of the model, but it can be misleading when dealing with imbalanced datasets. Precision focuses on the proportion of correct positive predictions, while recall measures the model's ability to identify all relevant positive cases. The F1-score, as the harmonic mean of precision and recall, offers a balanced evaluation metric, especially useful when false positives and false negatives carry different consequences. Additionally, techniques such as cross-validation help ensure the model's performance is consistent and not just a result of overfitting to a particular dataset. Proper evaluation allows for informed decision-making when selecting and fine-tuning classification models for real-world applications.
