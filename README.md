@@ -270,9 +270,9 @@ We use classifciation report and cofusion matrix to review the perfomance of the
 >> Precision: 0.89, Recall: 0.90, F1-score: 0.90. Takes into account the support (number of samples) for each class. Heavily influenced by class 0, since it has many more samples.
 
 ⚠️ **Key Insight: Class Imbalance Problem**
-Class 1 (subscribed) is underrepresented: only 919 out of 8238 (~11%)
 
-The model is biased toward class 0 — good at predicting 'No', not so much 'Yes'.
+>> Class 1 (subscribed) is underrepresented: only 919 out of 8238 (~11%)
+>> The model is biased toward class 0 — good at predicting 'No', not so much 'Yes'.
 
 
 #### Baseline Model on KNeighbour Classifier
