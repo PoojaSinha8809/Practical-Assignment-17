@@ -125,7 +125,7 @@ How to Handle Negative Values in Our Model?
 For categorical we will use the subscription status values and review its frquency distribution.
 ![Frequency Distribution](images/screenshots/img25.jpg)
 
-We started following analysis for each feature :
+We did following analysis to understand each feature :
 
 - **Univariate Analysis:**
 >> Univariate analysis involves examining a single variable at a time to understand its distribution and characteristics. It helps in understanding the basic properties of individual features within the dataset.
