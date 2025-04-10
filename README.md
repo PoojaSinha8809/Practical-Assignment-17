@@ -154,6 +154,7 @@ Let's see the overview on each type of analysis and findings:
 ![Distribution of Campaign and Subscription Status](images/screenshots/img14.jpg)
 
 3. **Multivariate Analysis:**
+
 ![Exploring Correlations Between Features in the Dataset](images/screenshots/img15.jpg)
 ![Distributions of the numerical columns in the dataset](images/screenshots/img16.jpg)
 ![Correlation Distribution](images/screenshots/img17.jpg)
