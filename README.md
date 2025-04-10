@@ -244,7 +244,7 @@ We will begin by splitting the dataset into training and testing subsets. This i
 
 Once the dataset is split into training and testing sets, the next critical step is to build baseline classification models using a variety of algorithms. In this assignment, we focus on four widely used machine learning classifiers: Decision Tree, k-Nearest Neighbors (k-NN), Support Vector Machine (SVM), and Logistic Regression. Each of these models offers unique strengths and approaches to classification tasks. The goal of building these baseline models is to evaluate their initial performance on the dataset, using consistent metrics such as accuracy, precision, recall, and F1-score. This comparison helps identify which algorithm is most suitable for the given problem. Moreover, establishing baseline results sets the foundation for further model tuning and optimization in later stages, such as hyperparameter tuning, feature selection, or ensemble techniques. By systematically evaluating and comparing these models, we can make informed decisions about which classifier best balances performance, complexity, and interpretability for the task at hand. 
 
-**Decision Tree Base Model**
+#### Decision Tree Base Model
 
 The first model we used is based on Decision Tree algorithm. A Decision Tree is a type of supervised machine learning algorithm that can be used for both classification and regression tasks. It models decisions and their possible consequences in the form of a tree-like structure.
 We used here sklearn.tree.DecisionTreeClassifier. Let's take a look at the paramerters used in model development. 
@@ -257,6 +257,26 @@ We use classifciation report and cofusion matrix to review the perfomance of the
 
 
 ![Decision Tree Classification Report](images/screenshots/img29.jpg)
+
+**Overall Metric:**
+
+- Accuracy: 0.90
+>> The model is correct 90% of the time across all predictions.However, accuracy is misleading here due to class imbalance (many more "No" than "Yes").
+
+- Macro Avg:
+>> Precision: 0.76, Recall: 0.70, F1-score: 0.72. Simple average of metrics for both classes, treating them equally. Highlights the imbalance in performance between classes.
+
+- Weighted Avg:
+>> Precision: 0.89, Recall: 0.90, F1-score: 0.90. Takes into account the support (number of samples) for each class. Heavily influenced by class 0, since it has many more samples.
+
+⚠️ **Key Insight: Class Imbalance Problem**
+Class 1 (subscribed) is underrepresented: only 919 out of 8238 (~11%)
+
+The model is biased toward class 0 — good at predicting 'No', not so much 'Yes'.
+
+
+#### Baseline Model on KNeighbour Classifier
+
 
 
 
