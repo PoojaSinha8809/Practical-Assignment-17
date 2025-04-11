@@ -600,4 +600,4 @@ In the example, cv=5 in GridSearchCV means that 5-fold cross-validation is used 
 
 - **Cross-Validation:** Ensure robust cross-validation, especially if the dataset is imbalanced or noisy, to get a more reliable estimate of model performance and generalization.
 
-- **Collect Better Dataset:** We can try to look for more better dataset to avoid class imbalancing and allowing the model to give best performane. 
+- **Collect Better Dataset:** We can try to look for more better dataset to avoid class imbalancing and allowing the model to give best performance. 
