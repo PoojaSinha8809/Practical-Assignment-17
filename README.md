@@ -602,4 +602,6 @@ In the example, cv=5 in GridSearchCV means that 5-fold cross-validation is used 
 
 - **Collect Better Dataset:** We can try to look for more better dataset to avoid class imbalancing and allowing the model to give best performance. 
 
+### Reference to Jupyter Notebook 
+
 The Jupyter Notebook with details on investigation and findings can be find  here: https://github.com/PoojaSinha8809/Practical-Assignment-17/blob/main/prompt_III.ipynb
