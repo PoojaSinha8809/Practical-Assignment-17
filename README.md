@@ -467,6 +467,112 @@ Model evaluation in classification tasks is a crucial step to assess how well a 
 
 3. GridSearchCV and Kfold cross validation to find best parameter in case of each algorithm. 
 
+**GridSearchCV and K-fold validation technique**
 
+GridSearchCV is a technique used for hyperparameter tuning. It exhaustively searches through a specified hyperparameter grid and evaluates each combination using cross-validation.
 
+Purpose: GridSearchCV helps to find the best hyperparameters for a given model, improving the model’s performance.
 
+How it works:
+
+We define a grid of hyperparameters (a dictionary of parameters to tune).GridSearchCV will try every possible combination of hyperparameters in the grid and evaluate the model using cross-validation. It will return the best combination of hyperparameters that give the highest performance.
+
+In this project we attempted to have K-Fold combination and GridSearch CV separately for decision tree and Kneighbour. To have better model evalutaion and performance review we tried combining K-Fold and GridSearchCV. 
+
+**Combining K-Fold and GridSearchCV**
+
+GridSearchCV uses K-Fold Cross-Validation internally. When we use GridSearchCV, it automatically performs cross-validation on each hyperparameter combination in our grid.
+
+In the example, cv=5 in GridSearchCV means that 5-fold cross-validation is used during the hyperparameter search. This combination ensures that we are getting a robust evaluation of the model for each hyperparameter setting.
+
+**Benefits of K-Fold Cross-Validation + GridSearchCV:**
+
+- Reliable Model Evaluation: Using cross-validation within GridSearchCV gives us more reliable performance metrics than using a single train-test split.
+
+- Optimal Hyperparameters: GridSearchCV ensures that the best combination of hyperparameters is selected, improving model performance.
+
+- Generalization: The use of cross-validation ensures that the model is not overfitting to the training data and performs well on unseen data.
+
+#### Decision Tree Best model evaluation using GridSearchCV. 
+
+**Summary Result**
+
+- Best Hyperparameters: The chosen values (max_depth = 3, min_samples_leaf = 1, min_samples_split = 2) provide a good balance between model flexibility and preventing overfitting. The tree is allowed to split and create nodes as long as there are at least 2 data points, but it will not grow too deep, with the max depth set to 3.
+
+- Accuracy: The model achieved an accuracy of 91.96%, which indicates that the model generalizes well to the data and performs well on unseen examples.
+
+**Take Away:**
+
+- GridSearchCV was used to find the optimal hyperparameters for the Decision Tree model.
+
+- The chosen parameters suggest that the model is simple but effective. It strikes a balance between underfitting (where the model is too simple to capture the data patterns) and overfitting (where the model is too complex and memorizes the training data).
+
+- The accuracy achieved is strong, especially considering the simplicity of the model (a depth of 3 is quite shallow for a Decision Tree).
+
+#### KNeighbour Best model evaluation using GridSearchCV. 
+
+**Summary of the Result:**
+
+- Best Hyperparameters:
+  - metric = 'minkowski': The default choice for KNN, providing flexibility in calculating distances.
+  - n_neighbors = 15: A balanced number of neighbors that avoids overfitting while still capturing the underlying data patterns.
+  - p = 2: The use of Euclidean distance, a common and effective metric for KNN.
+  - weights = 'uniform': Each neighbor contributes equally to the classification decision.
+
+- Accuracy: The model achieved an accuracy of 91.58%, which indicates that it has a high predictive performance, correctly classifying a large proportion of the test data.
+
+**Take Away:**
+
+- GridSearchCV helped find the best set of hyperparameters for the KNN classifier, optimizing the model for performance.
+
+- The accuracy of 91.58% is a strong result, showing that the model is performing well in terms of classification.
+
+- The chosen hyperparameters ensure that the model is neither overfitting nor underfitting and is generalizing well to unseen data.
+
+#### Logistic Regression Best model evaluation using GridSearchCV. 
+
+**Summary of the Result:**
+
+- Best Hyperparameters:
+ 
+    - C = 0.01: A small regularization strength is applied, suggesting the model is being penalized more for complexity, leading to a simpler   model that is less likely to overfit.
+
+    - max_iter = 500: The optimization algorithm is allowed up to 500 iterations to find the best-fitting parameters, ensuring the model has enough time to converge.
+
+    - solver = 'liblinear': The optimization algorithm used is 'liblinear', which is suitable for smaller datasets and works efficiently with fewer features.
+
+- Accuracy: The model achieved an accuracy of 91.39%, which indicates that it is performing well, with the model being able to correctly predict the target variable for the majority of test data points.
+
+**Take Away:**
+
+- The GridSearchCV process helped identify the optimal regularization strength (C = 0.01), the number of iterations for convergence (max_iter = 500), and the solver ('liblinear'), all of which contributed to the 91.39% accuracy.
+
+- The model is performing well and generalizing effectively, avoiding overfitting while still capturing key patterns in the data.
+
+#### Support Vector Machine Best model evaluation using GridSearchCV. 
+
+**Summary of the Result:**
+
+- Best Hyperparameters:
+
+    - C = 0.1: A moderate value for C that balances the trade-off between overfitting and underfitting.
+
+    - degree = 3: This is the degree of the polynomial kernel, but since the kernel = 'rbf', it is not used.
+
+    - gamma = 'scale': 'scale' is used for adjusting gamma based on the variance of the dataset, which is a good choice for most datasets.
+
+    - kernel = 'rbf': The Radial Basis Function kernel, which is suitable for capturing non-linear relationships in the data.
+
+- Accuracy: The test accuracy of 88.84% suggests that the model is performing well, though it is slightly lower than the cross-validation accuracy. This could be due to various factors such as noise in the test data or inherent limitations in the model.    
+
+**Take Away:**
+
+- The optimal regularization parameter C is 0.1, which indicates that the model is applying a moderate amount of regularization. This helps prevent overfitting by allowing some errors in the model, which makes it more generalized and able to perform well on unseen data
+
+- The use of gamma = 'scale' suggests the model adapts well to the data by adjusting the kernel function dynamically, ensuring better performance.
+
+- The RBF kernel choice shows that the data likely has non-linear relationships, and the model is well-suited to handle such complexity.
+
+- The model demonstrates strong generalization capabilities, making it suitable for deployment with high accuracy on both training and test datasets.
+
+![Best Model Evaluation and Comparision](images/screenshots/img24.jpg)
